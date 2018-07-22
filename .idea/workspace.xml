@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="25b9cdf0-17dc-442e-b8cd-edeb73921862" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/day1/简易todo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4.reactivity.html" beforeDir="false" afterPath="$PROJECT_DIR$/day1/4.reactivity.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/5.reactivity-arr.html" beforeDir="false" afterPath="$PROJECT_DIR$/day1/5.reactivity-arr.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/6.v-for.html" beforeDir="false" afterPath="$PROJECT_DIR$/day1/6.v-for.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/7.event.vue.html" beforeDir="false" afterPath="$PROJECT_DIR$/day1/7.event.vue.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/7.event原生.html" beforeDir="false" afterPath="$PROJECT_DIR$/day1/7.event原生.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/defineProperty.html" beforeDir="false" afterPath="$PROJECT_DIR$/day1/defineProperty.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/directives.html" beforeDir="false" afterPath="$PROJECT_DIR$/day1/directives.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/双向数据绑定.html" beforeDir="false" afterPath="$PROJECT_DIR$/day1/双向数据绑定.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/day1/简易todo.html" beforeDir="false" afterPath="$PROJECT_DIR$/day1/简易todo.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -97,8 +88,8 @@
       <file leaf-file-name="简易todo.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/day1/简易todo.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="473">
-              <caret line="25" column="26" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="26" />
+            <state relative-caret-position="774">
+              <caret line="32" column="68" selection-start-line="32" selection-start-column="68" selection-end-line="32" selection-end-column="68" />
             </state>
           </provider>
         </entry>
@@ -264,12 +255,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1532249797174</updated>
-      <workItem from="1532249798562" duration="9839000" />
+      <workItem from="1532249798562" duration="10257000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9839000" />
+    <option name="totallyTimeSpent" value="10257000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -372,8 +363,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/day1/简易todo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
-          <caret line="25" column="26" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="26" />
+        <state relative-caret-position="774">
+          <caret line="32" column="68" selection-start-line="32" selection-start-column="68" selection-end-line="32" selection-end-column="68" />
         </state>
       </provider>
     </entry>
