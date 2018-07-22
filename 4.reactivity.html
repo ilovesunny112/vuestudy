@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+
+        {{a.school}}
+    </div>
+
+    <script>
+        <!--vue 会 循环 data 中的数据（数据劫持） 依次的增加 getter 和 setter-->
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                a:{
+                    // school:"",
+                //    使用变量时候 先要初始化 否则 新加的属性不会导致 页面刷新
+                }
+            }
+        })
+
+        vm.$set(vm.a,"obj","1");
+    //    此方法可以添加响应式的 属性
+
+        // 还有别的方法 替换原对象
+        vm.a = {school:"哈哈哈"}
+
+
+
+        // 三种方案
+        // 1， 在data 里面把结构都写好 留空
+        // 2， 用 $set 方法 可以添加响应式的属性
+        // 3， 重写 对象
+    </script>
+</body>
+</html>

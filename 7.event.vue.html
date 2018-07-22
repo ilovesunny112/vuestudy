@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div  @click = "fn($event)">click me </div>
+
+        <!--这里
+            如果没有 fn()  那么 事件函数默认会被传递到 函数作用域里
+            如果是  fn() 那么 需要显式的去传递时间函数 fn($event)
+        -->
+    </div>
+
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                // fn(){
+                //     console.log(this)
+                //     console.log(arguments)
+                // }
+            },
+            methods:{
+                fn(e){
+                    console.log(e)
+                    console.log(this)
+                    console.log(arguments)
+                }
+            }
+        })
+
+    //    methods 和  data 中的数据 会 全部放在 vm 上， 所以名字不能冲突
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<!--以前 拼接字符串 形成 html  重复渲染 性能很低-->
+
+<!--vue 提供指令 v-for 解决循环渲染列表问题 更高效 会服用原有结构-->
+<!--要循环谁 就在谁的身上增加 v-for 指令-->
+<div id="app">
+    <ul>
+        <li v-for ="(item,idx) of fruits">
+            <!--注意  for in for of 的区别-->
+            <!--两个参数顺序 和 原生 forEach 方法类似-->
+            {{item.name}} --- {{idx}}
+            <ul>
+                <li v-for="(c,cidx) in item.color">
+                    {{c}} {{idx}}.{{cidx}}
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+
+    <div v-for="c in 'avcedfdasj'">{{c}}</div>
+    <div v-for="c in 30">{{c}}</div>
+
+    <ul>
+        <li v-for="(value,key) in obj">
+            {{key,}} {{`${key},${value}`}}
+        </li>
+    </ul>
+</div>
+
+
+<script>
+    <!--vue 会 循环 data 中的数据（数据劫持） 依次的增加 getter 和 setter-->
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            fruits:[
+                {
+                    name:"apple",
+                    color:["green","yellow","red"]
+                },
+                {
+                    name:"banana",
+                    color:["yellow","green"]
+                },
+                {
+                    name:"watermelon",
+                    color:["pink","red"]
+                }
+            ],
+            obj:{
+                "name":"Sunny",
+                age:33,
+                gender:true
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

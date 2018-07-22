@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+
+    {{arr}}
+</div>
+
+<script>
+    <!--vue 会 循环 data 中的数据（数据劫持） 依次的增加 getter 和 setter-->
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            arr:[1,2,3,4,5]
+        }
+    })
+//    去改变数组中某一项 是监控不到
+//    还有一种 错误写法
+//         vm.arr.length -= 2; //同样无效
+
+
+    // 能够改变数组的方法 变异方法
+    // splice push pop shift unshift reverse sort
+    // 这几方法可以触发
+
+    // vm.arr.reverse();
+
+
+    // 或者 重写 arr 如下
+
+    vm.arr = vm.arr.map(item=>item*3);
+</script>
+</body>
+</html>

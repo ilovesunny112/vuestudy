@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<input type="text" >
+<span></span>
+
+<script>
+
+    var obj ={}
+    var span = document.querySelector("span")
+    Object.defineProperty(obj,"name",{
+        get(){
+            return this._name;
+
+        },
+        set(val){
+            this._name = val;
+            ipt.value = val;
+            span.innerHTML = val;
+        }
+    })
+
+
+
+
+    var ipt  = document.querySelector("input");
+
+    ipt.oninput = function(){
+        obj.name = this.value;
+    }
+    obj.name = 1;
+
+</script>
+</body>
+</html>
