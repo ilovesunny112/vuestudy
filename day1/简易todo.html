@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <style>
+        .container{
+            float: left;
+            position:relative;
+            left: 50%;
+        }
+        #app{
+            font-size: 30px;
+            font-family: "Monaco";
+            position: relative;
+            left: -50%;
+        }
+        .finished{
+            text-decoration: line-through;
+        }
+
+        input{
+            /*display: inline;*/
+            margin: 0 auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="app">
+            <input type="text" v-model="templtodo" @keyup.enter="addtodo">
+
+            <ul>
+
+                <li v-for="(item,key) in todoList" :class="{finished:item.isfinish}"><span>{{item.content}}</span> <a href="javascript:;" @click="del(key)">delete</a> <a href="javascript:;" @click="finish(key)">finish</a></li>
+
+            </ul>
+
+        </div>
+
+
+    </div>
+
+    <script>
+
+        var obj = {
+                content:"",
+                isfinish:false,
+                addtime:1213213131
+        };
+
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                templtodo:"",
+                todoList:[
+                    // {
+                    //     content:"",
+                    //     isfinish:false，
+                    //     addtime:1213213131
+                    // }
+                ]
+            },
+            methods:{
+                addtodo(){
+                    if(this.templtodo.length < 4)
+                        return;
+                    this.todoList.push({
+                        content:this.templtodo,
+                        isfinish:false,
+                        addtime:new Date().getTime()
+                    })
+                    this.templtodo = "";
+                },
+                del(key){
+                    this.todoList.splice(key,1)
+                },
+                finish(key){
+                    this.todoList[key].isfinish = true;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
