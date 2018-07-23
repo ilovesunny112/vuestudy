@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+            <input type="checkbox" value="1" v-model="arr1">
+            <input type="checkbox" value="2" v-model="arr1">
+            <input type="checkbox" value="3" v-model="arr1">
+            <input type="checkbox" value="4" v-model="arr1">
+        <br>
+        your choice is {{arr1}}
+
+
+        <input type="radio" v-model="arr2" value="apple">
+        <input type="radio" v-model="arr2" value="banana">
+        <input type="radio" v-model="arr2" value="potato">
+        <input type="radio" v-model="arr2" value="tomato">
+        <br>
+        your radio check is {{arr2}}
+
+        <br>
+
+        <select name="fff" id="ffff" v-model="arr3" multiple>
+
+            <option value="Beijing">Beijing</option>
+            <option value="Shanghai">Shanghai</option>
+            <option value="Hongkong"> Hongkong</option>
+            <option value="Tokyo">Tokyo</option>
+
+        </select>
+
+        <br>
+
+        {{arr3}}
+    </div>
+    
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                arr1:[],
+                arr2:[],
+                arr3:[]
+            }
+        })
+    </script>
+
+</body>
+</html>

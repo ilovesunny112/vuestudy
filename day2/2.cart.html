@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="../node_modules/axios/dist/axios.js"></script>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                products: []
+            },
+            created(){
+
+                // created 专门用来做  ajax 请求最合适不过 
+
+                axios.get("./carts.json").then((res)=>
+                    this.products = this.products.concat(res.data)
+                ).catch(err=>console.log(err))
+
+
+                
+            }
+        })
+
+        
+    </script>
+</body>
+</html>
