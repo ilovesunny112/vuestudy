@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>购物车实例页面</title>
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0, user-scalable = no">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/axios/dist/axios.js"></script>
+    <style>
+
+        .cart img{
+            width: 80px;
+        }
+        input[type='number']{
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="app">
+        <h2 class="text-center text-info">购物车案例</h2>
+        <table class="table table-bordered table-hover cart " >
+
+
+            <tr>
+                <td><input type="checkbox" v-model="checkAll" class="form-control"> CHECKALL</td>
+                <td>img</td>
+                <td>name</td>
+                <td>info</td>
+                <td>price</td>
+                <td>number</td>
+                <td>total</td>
+                <td>operation</td>
+
+            </tr>
+            <tr v-for="(prd,index) in products">
+                <td><input type="checkbox" v-model="prd.isSelected" class="form-control form-control-lg"></td>
+                <td><img :src="prd.prdCover" alt=""></td>
+                <td>{{prd.prdName}}</td>
+                <td>{{prd.prdInfo}}</td>
+                <td>{{prd.prdPrice}}</td>
+                <td><input type="number" v-model.number="prd.prdCount" min="1" class="form-control-sm">
+                </td>
+
+                <td class="text-nowrap">
+
+                    {{(prd.prdPrice * prd.prdCount)|toFixed(2)}}
+                </td>
+                <td><button class="btn btn-danger btn-sm" @click="remove(prd)">Remove</button></td>
+            </tr>
+    
+            </table>
+
+            <h3>total amount:{{totalAmount|toFixed(2)}}</h3>
+    </div>
+
+
+    <script>
+
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                products:[],
+
+            },
+            methods:{
+                remove(obj){
+                    this.products = this.products.filter(item=>item!==obj)
+                }
+            },
+            computed:{
+                checkAll:{
+                    get(){
+                        return this.products.every(item=>item.isSelected)
+                    },
+                    set(val){
+                        this.products.forEach(item=>item.isSelected = val)
+                    }
+                },
+                totalAmount:{
+                    get(){
+                        // console.log(this)
+                        return this.products.reduce((prev,next,index,arr)=>{
+                            console.log(next)
+                            console.log(prev)
+                            return prev + (next.isSelected ? (next.prdPrice * next.prdCount) : 0);
+
+                        },0)
+                    }
+                }
+            },
+            created(){
+                axios.get("./carts.json").then((res)=>{
+                    this.products = this.products.concat(res.data)
+
+                })
+            },
+            filters:{
+                toFixed(input,params1){
+                    console.log(arguments)
+                    return "$ " + input.toFixed(params1)
+                }
+            }
+
+
+        })
+    </script>
+</body>
+</html>
