@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <style>
+        div{
+            padding: 40px;
+
+        }
+        div{
+            background: #000;
+            color: #fff;
+        }
+        div>div{
+            background-color: orange;
+        }
+        div>div>div{
+            background-color: purple;
+        }
+        div>div>div>div{
+            background-color: yellow;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="app">
+        <div  >
+        parent
+            <div  >children
+                <div >
+                    {{"123" | my(1,2,3)}} 
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="app2">
+
+            {{"355.2" | my(1,2,3)}} 
+    </div>
+
+<!-- .stop 可以禁止 冒泡传播  用法是 @event.stop-->
+    <script>
+
+    Vue.filter("my",(input,p1,p2,p3)=>"￥ " + input)
+    
+    let vm = new Vue({
+        el:"#app",
+        methods:{
+            child(){
+                alert("child")
+            },
+            parent(){
+                alert("parent")
+            },
+            grandson(){
+                alert("grandson")
+            }
+
+        },
+        filters: {
+            my(data,p1,p2,p3){
+                return "$ " + data;
+            }
+        }
+    })
+    
+    let vm2 = new Vue({
+        el:"#app2",
+
+    })
+    
+
+    // 怎么共用 filter 以上是 某个实例上的filters
+
+    // 如果公用 那么就得挂在 构造函数上
+
+// <!-- 
+//     Vue.filter(filtername,function(){
+//         return 啥啥啥
+//     }) -->
+
+    
+
+    // 过滤器也有优先级的   优先使用自己的 实例过滤器 后  使用 全局过滤器
+    
+    </script>
+</body>
+</html>

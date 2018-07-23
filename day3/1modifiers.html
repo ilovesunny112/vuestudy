@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <style>
+        div{
+            padding: 40px;
+        }
+        div{
+            background: #000;
+        }
+        div>div{
+            background-color: orange;
+        }
+        div>div>div{
+            background-color: purple;
+        }
+        div>div>div>div{
+            background-color: yellow;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="app">
+        <div @click="parent">
+        parent
+            <div @click.self="child">children
+                <div @click = "grandson">
+                    grandson
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+<!-- .stop 可以禁止 冒泡传播  用法是 @event.stop-->
+    <script>
+    
+    let vm = new Vue({
+        el:"#app",
+        methods:{
+            child(){
+                alert("child")
+            },
+            parent(){
+                alert("parent")
+            },
+            grandson(){
+                alert("grandson")
+            }
+
+        }
+    })
+    
+    // .stop 可以 阻止事件传播  .stop 不一定是 阻止冒泡 而是 阻止事件传播  往上往下 都会阻止 
+        // @event.stop
+    // .capture 是 捕获  先执行 .capture的事件 然后跳过直达目的地
+        // @event.capture
+    // .prevent 组织事件默认行为
+    
+    // 如果想把事件绑定一次怎么做 
+        // @event.once
+
+
+    // 判断事件源 
+        // @event.self
+        // 非常有用 
+        // 不需要判断  srcelement 或者 target 了 
+    
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算属性 computed</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{len}}
+        <button @click="push">click me</button>
+    </div>
+
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                arr:[1,2,3,4,5,6,7,7]
+
+            },
+            computed:{
+                len:{
+                    get(){
+                        console.log(this)
+                        return this.arr.length;
+                    }
+
+                }
+            },
+            methods:{
+                push(){
+                    this.arr.push(Math.round(Math.random*10))
+                }
+            }
+            
+        })
+
+
+
+        // 计算“属性” 和 方法的区别 
+
+        // 计算属性 是 属性 不是方法
+
+        // 方法不会有缓存 computed 会根据依赖的vue属性进行缓存  可以响应式变化的 
+
+        // computed 两部分组成 get 和 set
+        // 但是  不能只有 set  没有 get
+
+        // 一般情况下 通过 js 赋值影响其他人 或者通过输入框 设置 值的时候 可以设置调用set
+
+    </script>
+</body>
+</html>

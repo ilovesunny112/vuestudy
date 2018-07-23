@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 练习题</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        全选 <input type="checkbox" v-model="checkall"> <br>
+        <input type="checkbox" v-for="prd in prds" v-model="prd.ischecked"> 
+    </div>
+
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                prds:[{
+                    ischecked:true,
+                    name:"小米"
+                },
+                {
+                    ischecked:false,
+                    name:"apple"
+                }]
+            },
+            methods:{
+                
+            },
+            computed:{
+                checkall:{
+
+                    get(){
+                        console.log("get");
+                        
+                        return this.prds.every(item=>item.ischecked)
+                    },
+                    set(val){
+                        console.log("set ",val)
+                        this.prds.forEach(item => {
+                          item.ischecked = val;  
+                        });
+                    }
+                }
+            }
+        })
+    
+    </script>
+</body>
+</html>
