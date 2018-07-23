@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue 动画实现</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="../node_modules/animate.css/animate.css">
+    <style>
+
+        .flip-list-move{
+            -webkit-transition: transform 1s;
+            -moz-transition: transform 1s;
+            -ms-transition: transform 1s;
+            -o-transition: transform 1s;
+            transition: transform 1s;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <input type="text" v-model="query">
+    <transition-group name="flip-list"
+        tag="div"
+    >
+        <div v-for="(a,idx) in qarr" v-bind:key="a" >{{a}} </div>
+    </transition-group>
+
+</div>
+
+
+<script>
+
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            query:0,
+            arr:[1,2,3,4,5,6,7,8,9],
+
+        },
+        computed:{
+            qarr:{
+                get(){
+                    return this.arr.filter(item=>item>this.query)
+                }
+            }
+        }
+
+
+    })
+</script>
+</body>
+</html>
