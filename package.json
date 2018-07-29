@@ -15,6 +15,7 @@
     "bootstrap": "^4.1.2",
     "code": "^5.2.0",
     "npm": "^6.2.0",
-    "vue": "^2.5.16"
+    "vue": "^2.5.16",
+    "vue-router": "file:vue-router"
   }
 }

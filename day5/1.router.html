@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>路由 vue-router</title>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+    <!-- 前后端分离， 后端只负责提供接口 供前端调用， 像跳转都是前端利用 hash 模式 来处理 
+
+
+        以及  
+
+        H5 的 history.pushState 方法
+
+     -->
+    <!-- 
+        h5 的用法 
+
+        history.pushState("", "", "/sada")
+    
+    -->
+
+
+    <!-- 
+        开发的时候 使用 hash 模式 
+
+        上线的时候 采用 h5 pushState 方法 
+
+        hash  不支持 seo 
+    -->
+
+
+
+
+    <div id="app">
+        单页开发 其实就是 组件的切换
+        <router-link to="/home">to home</router-link>
+        <router-link to="/list"> to list</router-link>
+
+        <router-view></router-view>
+    </div>
+    <template id="home">
+        <div>
+            this is home page
+        </div>
+    </template>
+
+    <template id="list">
+        <div>
+            this is list page
+           
+            <ul>
+                    <li><a href="javascript:;">我是连接 </a></li>
+                    <li><a href="javascript:;">我是连接 </a></li>
+                    <li><a href="javascript:;">我是连接 </a></li>
+                    <li><a href="javascript:;">我是连接 </a></li>
+                    <li><a href="javascript:;">我是连接 </a></li>
+            </ul>
+        </div>
+        
+    </template>
+
+
+
+
+    <script>
+        // 第一步 声明几个组件
+        let home = {
+            template:"#home"
+        }
+        let list = {
+            template:"#list"
+        }
+
+        // 第二步 声明 vue-router 实例 其中 routes 是 一个 路径 到 组件的 映射表集合  也就是 数组类型
+
+         let routes = [
+            //路由 映射表 配置 路径 和 组件的关系 
+            // 路径必须加 斜线 / 开头
+            {
+                path:"/home",
+                component:home
+            },
+            {
+                path:"/list",
+                component:list
+            }
+
+        ]
+
+
+        let router = new VueRouter(//引入 vue-router 自带 VueRouter 类
+            {
+                routes
+            }
+        )
+
+       
+
+        // 把路由挂在 根实例上
+
+        let vm = new Vue({
+            el:"#app",
+            router
+            
+        })
+    </script>
+
+</body>
+</html>
